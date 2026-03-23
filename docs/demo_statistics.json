@@ -1,0 +1,26 @@
+{
+  "total_transactions": 1000,
+  "fraud_cases": 0,
+  "suspicious_cases": 1000,
+  "safe_cases": 0,
+  "fraud_rate": "0.00%",
+  "avg_risk_score": "0.083",
+  "high_risk_transactions": 0,
+  "key_demo_transactions": {
+    "TXN00006": {
+      "product": "Crude Oil",
+      "price_deviation": "-73.12%",
+      "risk_category": "FRAUD"
+    },
+    "TXN00017": {
+      "product": "Wheat",
+      "price_deviation": "+19.33%",
+      "risk_category": "SUSPICIOUS"
+    },
+    "TXN00010": {
+      "product": "Electronics",
+      "alerts": "Multiple",
+      "risk_category": "SUSPICIOUS"
+    }
+  }
+}

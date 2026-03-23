@@ -1,0 +1,745 @@
+{
+  "statistics": {
+    "overview": {
+      "total_transactions": 1000,
+      "fraud_cases": 117,
+      "safe_cases": 883,
+      "fraud_rate": "11.70%"
+    },
+    "risk_factors": {
+      "high_price_deviation": 101,
+      "route_anomalies": 99,
+      "high_risk_companies": 164,
+      "port_congestion": 279
+    },
+    "products": {
+      "most_common": {
+        "Aluminum": 225,
+        "Steel": 200,
+        "CrudeOil": 198,
+        "Copper": 193,
+        "Wheat": 184
+      },
+      "highest_fraud_rate": {
+        "CrudeOil": 15.151515151515152,
+        "Wheat": 13.043478260869565,
+        "Copper": 11.917098445595855,
+        "Aluminum": 10.666666666666668,
+        "Steel": 8.0
+      }
+    },
+    "countries": {
+      "top_exporters": {
+        "USA": 211,
+        "Chile": 203,
+        "UAE": 196,
+        "Australia": 195,
+        "China": 195
+      },
+      "top_importers": {
+        "China": 211,
+        "Japan": 202,
+        "India": 201,
+        "Egypt": 194,
+        "Germany": 192
+      }
+    },
+    "trade_value": {
+      "total": "$6,390,879,283.97",
+      "average": "$6,390,879.28",
+      "fraud_total": "$1,165,816,468.70"
+    }
+  },
+  "scenarios": {
+    "extreme_price_manipulation": [
+      {
+        "transaction_id": "TXN00366",
+        "product": "CrudeOil",
+        "commodity_category": "Energy",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$75.00",
+          "trade_price": "$260.83",
+          "deviation": "247.77%"
+        },
+        "trade_value": "$484,361.31",
+        "route": {
+          "from": "Shanghai, China",
+          "to": "Alexandria, Egypt",
+          "distance_km": 6100,
+          "route_name": "Dubai-Hamburg"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.44",
+          "route_anomaly": "No",
+          "port_activity_index": "1.75"
+        },
+        "companies": {
+          "exporter": "HuaxinSteel",
+          "importer": "DeltaFoods"
+        }
+      },
+      {
+        "transaction_id": "TXN00793",
+        "product": "Aluminum",
+        "commodity_category": "Metal",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$2400.00",
+          "trade_price": "$8335.17",
+          "deviation": "247.30%"
+        },
+        "trade_value": "$11,985,974.46",
+        "route": {
+          "from": "Dubai, UAE",
+          "to": "Hamburg, Germany",
+          "distance_km": 6100,
+          "route_name": "Dubai-Hamburg"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.65",
+          "route_anomaly": "No",
+          "port_activity_index": "1.71"
+        },
+        "companies": {
+          "exporter": "PetroGlobal",
+          "importer": "EuroEnergy"
+        }
+      },
+      {
+        "transaction_id": "TXN00288",
+        "product": "Steel",
+        "commodity_category": "Metal",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$520.00",
+          "trade_price": "$1790.41",
+          "deviation": "244.31%"
+        },
+        "trade_value": "$3,668,550.09",
+        "route": {
+          "from": "Valparaiso, Chile",
+          "to": "Chennai, India",
+          "distance_km": 17000,
+          "route_name": "Valparaiso-Shanghai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.66",
+          "route_anomaly": "No",
+          "port_activity_index": "0.75"
+        },
+        "companies": {
+          "exporter": "AndesMining",
+          "importer": "BharatMetals"
+        }
+      },
+      {
+        "transaction_id": "TXN00672",
+        "product": "Aluminum",
+        "commodity_category": "Metal",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$2400.00",
+          "trade_price": "$8178.42",
+          "deviation": "240.77%"
+        },
+        "trade_value": "$29,074,283.10",
+        "route": {
+          "from": "Shanghai, China",
+          "to": "Chennai, India",
+          "distance_km": 5600,
+          "route_name": "Shanghai-Singapore-Chennai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.24",
+          "route_anomaly": "No",
+          "port_activity_index": "0.75"
+        },
+        "companies": {
+          "exporter": "HuaxinSteel",
+          "importer": "BharatMetals"
+        }
+      },
+      {
+        "transaction_id": "TXN00503",
+        "product": "CrudeOil",
+        "commodity_category": "Energy",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$75.00",
+          "trade_price": "$255.32",
+          "deviation": "240.43%"
+        },
+        "trade_value": "$738,640.76",
+        "route": {
+          "from": "Dubai, UAE",
+          "to": "Alexandria, Egypt",
+          "distance_km": 17000,
+          "route_name": "Valparaiso-Shanghai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.77",
+          "route_anomaly": "No",
+          "port_activity_index": "0.91"
+        },
+        "companies": {
+          "exporter": "PetroGlobal",
+          "importer": "DeltaFoods"
+        }
+      }
+    ],
+    "multi_factor_risk": [
+      {
+        "transaction_id": "TXN00062",
+        "product": "CrudeOil",
+        "commodity_category": "Energy",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$75.00",
+          "trade_price": "$21.67",
+          "deviation": "-71.11%"
+        },
+        "trade_value": "$32,656.69",
+        "route": {
+          "from": "Dubai, UAE",
+          "to": "Chennai, India",
+          "distance_km": 9100,
+          "route_name": "Shanghai-Dubai-Turkey-Chennai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.41",
+          "route_anomaly": "Yes",
+          "port_activity_index": "1.54"
+        },
+        "companies": {
+          "exporter": "PetroGlobal",
+          "importer": "BharatMetals"
+        }
+      },
+      {
+        "transaction_id": "TXN00134",
+        "product": "Steel",
+        "commodity_category": "Metal",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$520.00",
+          "trade_price": "$948.45",
+          "deviation": "82.39%"
+        },
+        "trade_value": "$1,847,580.60",
+        "route": {
+          "from": "Dubai, UAE",
+          "to": "Hamburg, Germany",
+          "distance_km": 6100,
+          "route_name": "Dubai-Hamburg"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.93",
+          "route_anomaly": "No",
+          "port_activity_index": "1.66"
+        },
+        "companies": {
+          "exporter": "PetroGlobal",
+          "importer": "EuroEnergy"
+        }
+      },
+      {
+        "transaction_id": "TXN00297",
+        "product": "CrudeOil",
+        "commodity_category": "Energy",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$75.00",
+          "trade_price": "$34.68",
+          "deviation": "-53.76%"
+        },
+        "trade_value": "$114,548.04",
+        "route": {
+          "from": "Shanghai, China",
+          "to": "Alexandria, Egypt",
+          "distance_km": 5600,
+          "route_name": "Shanghai-Singapore-Chennai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.86",
+          "route_anomaly": "No",
+          "port_activity_index": "1.78"
+        },
+        "companies": {
+          "exporter": "HuaxinSteel",
+          "importer": "DeltaFoods"
+        }
+      },
+      {
+        "transaction_id": "TXN00301",
+        "product": "Copper",
+        "commodity_category": "Metal",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$8500.00",
+          "trade_price": "$18327.17",
+          "deviation": "115.61%"
+        },
+        "trade_value": "$38,083,859.26",
+        "route": {
+          "from": "Shanghai, China",
+          "to": "Alexandria, Egypt",
+          "distance_km": 11500,
+          "route_name": "Houston-Alexandria"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.81",
+          "route_anomaly": "No",
+          "port_activity_index": "1.58"
+        },
+        "companies": {
+          "exporter": "HuaxinSteel",
+          "importer": "DeltaFoods"
+        }
+      },
+      {
+        "transaction_id": "TXN00360",
+        "product": "Wheat",
+        "commodity_category": "Agriculture",
+        "fraud_label": "SAFE",
+        "price_info": {
+          "market_price": "$300.00",
+          "trade_price": "$317.46",
+          "deviation": "5.82%"
+        },
+        "trade_value": "$768,888.12",
+        "route": {
+          "from": "Houston, USA",
+          "to": "Alexandria, Egypt",
+          "distance_km": 12000,
+          "route_name": "Perth-Malaysia-Indonesia-Yokohama"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.88",
+          "route_anomaly": "Yes",
+          "port_activity_index": "1.77"
+        },
+        "companies": {
+          "exporter": "AgriGrain",
+          "importer": "DeltaFoods"
+        }
+      }
+    ],
+    "high_value_fraud": [
+      {
+        "transaction_id": "TXN00570",
+        "product": "Copper",
+        "commodity_category": "Metal",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$8500.00",
+          "trade_price": "$24532.81",
+          "deviation": "188.62%"
+        },
+        "trade_value": "$93,224,678.00",
+        "route": {
+          "from": "Dubai, UAE",
+          "to": "Chennai, India",
+          "distance_km": 6100,
+          "route_name": "Dubai-Hamburg"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.51",
+          "route_anomaly": "No",
+          "port_activity_index": "1.13"
+        },
+        "companies": {
+          "exporter": "PetroGlobal",
+          "importer": "BharatMetals"
+        }
+      },
+      {
+        "transaction_id": "TXN00376",
+        "product": "Copper",
+        "commodity_category": "Metal",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$8500.00",
+          "trade_price": "$25846.79",
+          "deviation": "204.08%"
+        },
+        "trade_value": "$88,990,497.97",
+        "route": {
+          "from": "Shanghai, China",
+          "to": "Shanghai, China",
+          "distance_km": 11500,
+          "route_name": "Houston-Alexandria"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.44",
+          "route_anomaly": "No",
+          "port_activity_index": "1.16"
+        },
+        "companies": {
+          "exporter": "HuaxinSteel",
+          "importer": "JiangsuCopper"
+        }
+      },
+      {
+        "transaction_id": "TXN00247",
+        "product": "Copper",
+        "commodity_category": "Metal",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$8500.00",
+          "trade_price": "$25757.24",
+          "deviation": "203.03%"
+        },
+        "trade_value": "$84,612,533.40",
+        "route": {
+          "from": "Shanghai, China",
+          "to": "Yokohama, Japan",
+          "distance_km": 5600,
+          "route_name": "Shanghai-Singapore-Chennai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.24",
+          "route_anomaly": "No",
+          "port_activity_index": "1.04"
+        },
+        "companies": {
+          "exporter": "HuaxinSteel",
+          "importer": "NipponAlloys"
+        }
+      },
+      {
+        "transaction_id": "TXN00322",
+        "product": "Copper",
+        "commodity_category": "Metal",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$8500.00",
+          "trade_price": "$19460.53",
+          "deviation": "128.95%"
+        },
+        "trade_value": "$73,307,816.51",
+        "route": {
+          "from": "Valparaiso, Chile",
+          "to": "Chennai, India",
+          "distance_km": 7800,
+          "route_name": "Perth-Yokohama"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.65",
+          "route_anomaly": "No",
+          "port_activity_index": "1.04"
+        },
+        "companies": {
+          "exporter": "AndesMining",
+          "importer": "BharatMetals"
+        }
+      },
+      {
+        "transaction_id": "TXN00448",
+        "product": "Copper",
+        "commodity_category": "Metal",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$8500.00",
+          "trade_price": "$22886.30",
+          "deviation": "169.25%"
+        },
+        "trade_value": "$57,467,499.30",
+        "route": {
+          "from": "Shanghai, China",
+          "to": "Chennai, India",
+          "distance_km": 5600,
+          "route_name": "Shanghai-Singapore-Chennai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.37",
+          "route_anomaly": "No",
+          "port_activity_index": "0.73"
+        },
+        "companies": {
+          "exporter": "HuaxinSteel",
+          "importer": "BharatMetals"
+        }
+      }
+    ],
+    "route_anomalies": [
+      {
+        "transaction_id": "TXN00354",
+        "product": "Wheat",
+        "commodity_category": "Agriculture",
+        "fraud_label": "SAFE",
+        "price_info": {
+          "market_price": "$300.00",
+          "trade_price": "$327.95",
+          "deviation": "9.32%"
+        },
+        "trade_value": "$1,218,334.25",
+        "route": {
+          "from": "Dubai, UAE",
+          "to": "Shanghai, China",
+          "distance_km": 12000,
+          "route_name": "Perth-Malaysia-Indonesia-Yokohama"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.95",
+          "route_anomaly": "Yes",
+          "port_activity_index": "1.12"
+        },
+        "companies": {
+          "exporter": "PetroGlobal",
+          "importer": "JiangsuCopper"
+        }
+      },
+      {
+        "transaction_id": "TXN00781",
+        "product": "CrudeOil",
+        "commodity_category": "Energy",
+        "fraud_label": "SAFE",
+        "price_info": {
+          "market_price": "$75.00",
+          "trade_price": "$83.51",
+          "deviation": "11.35%"
+        },
+        "trade_value": "$286,188.77",
+        "route": {
+          "from": "Dubai, UAE",
+          "to": "Shanghai, China",
+          "distance_km": 9100,
+          "route_name": "Shanghai-Dubai-Turkey-Chennai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.94",
+          "route_anomaly": "Yes",
+          "port_activity_index": "1.17"
+        },
+        "companies": {
+          "exporter": "PetroGlobal",
+          "importer": "JiangsuCopper"
+        }
+      },
+      {
+        "transaction_id": "TXN00549",
+        "product": "Wheat",
+        "commodity_category": "Agriculture",
+        "fraud_label": "FRAUD",
+        "price_info": {
+          "market_price": "$300.00",
+          "trade_price": "$745.91",
+          "deviation": "148.64%"
+        },
+        "trade_value": "$713,835.87",
+        "route": {
+          "from": "Shanghai, China",
+          "to": "Hamburg, Germany",
+          "distance_km": 9100,
+          "route_name": "Shanghai-Dubai-Turkey-Chennai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.93",
+          "route_anomaly": "Yes",
+          "port_activity_index": "0.82"
+        },
+        "companies": {
+          "exporter": "HuaxinSteel",
+          "importer": "EuroEnergy"
+        }
+      },
+      {
+        "transaction_id": "TXN00558",
+        "product": "Aluminum",
+        "commodity_category": "Metal",
+        "fraud_label": "SAFE",
+        "price_info": {
+          "market_price": "$2400.00",
+          "trade_price": "$2732.24",
+          "deviation": "13.84%"
+        },
+        "trade_value": "$5,693,988.16",
+        "route": {
+          "from": "Shanghai, China",
+          "to": "Chennai, India",
+          "distance_km": 22000,
+          "route_name": "Valparaiso-UAE-Singapore-Shanghai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.90",
+          "route_anomaly": "Yes",
+          "port_activity_index": "1.18"
+        },
+        "companies": {
+          "exporter": "HuaxinSteel",
+          "importer": "BharatMetals"
+        }
+      },
+      {
+        "transaction_id": "TXN00681",
+        "product": "Wheat",
+        "commodity_category": "Agriculture",
+        "fraud_label": "SAFE",
+        "price_info": {
+          "market_price": "$300.00",
+          "trade_price": "$300.46",
+          "deviation": "0.15%"
+        },
+        "trade_value": "$1,180,807.80",
+        "route": {
+          "from": "Houston, USA",
+          "to": "Hamburg, Germany",
+          "distance_km": 22000,
+          "route_name": "Valparaiso-UAE-Singapore-Shanghai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.89",
+          "route_anomaly": "Yes",
+          "port_activity_index": "1.41"
+        },
+        "companies": {
+          "exporter": "AgriGrain",
+          "importer": "EuroEnergy"
+        }
+      }
+    ],
+    "port_exploitation": [
+      {
+        "transaction_id": "TXN00100",
+        "product": "CrudeOil",
+        "commodity_category": "Energy",
+        "fraud_label": "SAFE",
+        "price_info": {
+          "market_price": "$75.00",
+          "trade_price": "$81.47",
+          "deviation": "8.63%"
+        },
+        "trade_value": "$159,192.38",
+        "route": {
+          "from": "Valparaiso, Chile",
+          "to": "Shanghai, China",
+          "distance_km": 6100,
+          "route_name": "Dubai-Hamburg"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.15",
+          "route_anomaly": "No",
+          "port_activity_index": "1.80"
+        },
+        "companies": {
+          "exporter": "AndesMining",
+          "importer": "JiangsuCopper"
+        }
+      },
+      {
+        "transaction_id": "TXN00114",
+        "product": "Wheat",
+        "commodity_category": "Agriculture",
+        "fraud_label": "SAFE",
+        "price_info": {
+          "market_price": "$300.00",
+          "trade_price": "$312.75",
+          "deviation": "4.25%"
+        },
+        "trade_value": "$277,096.50",
+        "route": {
+          "from": "Dubai, UAE",
+          "to": "Hamburg, Germany",
+          "distance_km": 7800,
+          "route_name": "Perth-Yokohama"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.37",
+          "route_anomaly": "No",
+          "port_activity_index": "1.80"
+        },
+        "companies": {
+          "exporter": "PetroGlobal",
+          "importer": "EuroEnergy"
+        }
+      },
+      {
+        "transaction_id": "TXN00214",
+        "product": "CrudeOil",
+        "commodity_category": "Energy",
+        "fraud_label": "SAFE",
+        "price_info": {
+          "market_price": "$75.00",
+          "trade_price": "$86.19",
+          "deviation": "14.92%"
+        },
+        "trade_value": "$207,373.14",
+        "route": {
+          "from": "Perth, Australia",
+          "to": "Chennai, India",
+          "distance_km": 9100,
+          "route_name": "Shanghai-Dubai-Turkey-Chennai"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.20",
+          "route_anomaly": "Yes",
+          "port_activity_index": "1.80"
+        },
+        "companies": {
+          "exporter": "AusMetal",
+          "importer": "BharatMetals"
+        }
+      },
+      {
+        "transaction_id": "TXN00255",
+        "product": "Aluminum",
+        "commodity_category": "Metal",
+        "fraud_label": "SAFE",
+        "price_info": {
+          "market_price": "$2400.00",
+          "trade_price": "$2285.61",
+          "deviation": "-4.77%"
+        },
+        "trade_value": "$7,903,639.38",
+        "route": {
+          "from": "Houston, USA",
+          "to": "Hamburg, Germany",
+          "distance_km": 11500,
+          "route_name": "Houston-Alexandria"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.42",
+          "route_anomaly": "No",
+          "port_activity_index": "1.80"
+        },
+        "companies": {
+          "exporter": "AgriGrain",
+          "importer": "EuroEnergy"
+        }
+      },
+      {
+        "transaction_id": "TXN00262",
+        "product": "Copper",
+        "commodity_category": "Metal",
+        "fraud_label": "SAFE",
+        "price_info": {
+          "market_price": "$8500.00",
+          "trade_price": "$7703.17",
+          "deviation": "-9.37%"
+        },
+        "trade_value": "$7,364,230.52",
+        "route": {
+          "from": "Perth, Australia",
+          "to": "Alexandria, Egypt",
+          "distance_km": 6100,
+          "route_name": "Dubai-Hamburg"
+        },
+        "risk_factors": {
+          "company_risk_score": "0.23",
+          "route_anomaly": "No",
+          "port_activity_index": "1.80"
+        },
+        "companies": {
+          "exporter": "AusMetal",
+          "importer": "DeltaFoods"
+        }
+      }
+    ]
+  },
+  "metadata": {
+    "generated_at": "2026-03-14T04:35:50.296133",
+    "dataset": "trinetra_trade_fraud_dataset_1000_rows_complex.csv",
+    "version": "1.0"
+  }
+}

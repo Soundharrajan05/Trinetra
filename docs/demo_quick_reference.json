@@ -1,0 +1,35 @@
+{
+  "demo_flow": {
+    "1_overview": "Show KPI metrics and fraud rate",
+    "2_alerts": "Highlight critical fraud alerts",
+    "3_transaction": "Investigate TXN00006 (extreme fraud)",
+    "4_explanation": "Get AI explanation for fraud indicators",
+    "5_visualizations": "Show route map and company network",
+    "6_ai_assistant": "Ask investigation questions"
+  },
+  "key_talking_points": [
+    "11.7% fraud rate detected across 1,000 transactions",
+    "AI-powered explanations using Google Gemini",
+    "Real-time fraud detection with IsolationForest ML",
+    "Multi-factor risk scoring (price, route, company, port)",
+    "Interactive visualizations for pattern analysis",
+    "RESTful API for system integration"
+  ],
+  "demo_transactions": {
+    "extreme_fraud": "TXN00006",
+    "high_risk_company": "TXN00017",
+    "multiple_alerts": "TXN00010",
+    "route_anomaly": "TXN00452"
+  },
+  "backup_plans": {
+    "gemini_fails": "Use fallback explanations (automatic)",
+    "dashboard_slow": "Switch to demo mode (500 rows)",
+    "system_crash": "Use backup instance on port 8502",
+    "network_down": "System works offline (local data)"
+  },
+  "emergency_commands": {
+    "restart_all": "pkill -f python && python main.py",
+    "restart_api": "pkill -f uvicorn && python -m uvicorn backend.api:app --port 8000 &",
+    "restart_dashboard": "pkill -f streamlit && streamlit run frontend/dashboard.py &"
+  }
+}

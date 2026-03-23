@@ -1,0 +1,13 @@
+# Testing dependencies for TRINETRA AI
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.10.0
+pytest-asyncio>=0.21.0
+httpx>=0.24.0  # For FastAPI testing
+coverage>=7.0.0
+
+# Additional testing utilities
+hypothesis>=6.70.0  # For property-based testing
+factory-boy>=3.2.0  # For test data generation
+freezegun>=1.2.0    # For time mocking
+responses>=0.23.0   # For HTTP mocking

@@ -1,0 +1,77 @@
+{
+  "extreme_price_manipulation": {
+    "title": "Extreme Price Manipulation",
+    "key_message": "Massive price deviations indicate transfer pricing fraud or money laundering",
+    "demo_script": [
+      "Show the transaction with highest price deviation",
+      "Highlight the market price vs trade price gap",
+      "Explain why no legitimate business would do this",
+      "Request AI explanation to show reasoning"
+    ],
+    "talking_points": [
+      "Transfer pricing fraud shifts profits to avoid taxes",
+      "Money laundering through undervalued exports",
+      "Sanctions evasion by disguising transaction values"
+    ]
+  },
+  "multi_factor_risk": {
+    "title": "Multi-Factor Risk Analysis",
+    "key_message": "Multiple risk factors compound to create high-confidence fraud detection",
+    "demo_script": [
+      "Show transaction with 3+ risk factors",
+      "Explain how AI weighs multiple indicators",
+      "Demonstrate risk scoring algorithm",
+      "Show how this prioritizes investigation efforts"
+    ],
+    "talking_points": [
+      "Single factors might be coincidence",
+      "Multiple factors indicate systematic fraud",
+      "AI learns patterns humans might miss"
+    ]
+  },
+  "high_value_fraud": {
+    "title": "High-Value Fraud Cases",
+    "key_message": "Prioritize investigation by financial impact",
+    "demo_script": [
+      "Sort by trade value to show highest impact",
+      "Calculate total fraud value detected",
+      "Explain ROI of fraud detection",
+      "Show business case for the system"
+    ],
+    "talking_points": [
+      "Focus resources on highest-impact cases",
+      "Prevent millions in losses",
+      "Justify investment in fraud detection"
+    ]
+  },
+  "route_anomalies": {
+    "title": "Route Anomaly Detection",
+    "key_message": "Unusual shipping routes suggest smuggling or customs evasion",
+    "demo_script": [
+      "Show route on map visualization",
+      "Compare with normal routes",
+      "Explain why fraudsters use indirect routes",
+      "Demonstrate pattern recognition"
+    ],
+    "talking_points": [
+      "Avoiding major customs checkpoints",
+      "Smuggling through less-monitored ports",
+      "Network analysis reveals patterns"
+    ]
+  },
+  "port_exploitation": {
+    "title": "Port Congestion Exploitation",
+    "key_message": "Fraudsters exploit overwhelmed ports with weak inspection",
+    "demo_script": [
+      "Show port activity index distribution",
+      "Highlight transactions through congested ports",
+      "Explain why this matters for fraud",
+      "Demonstrate alert system"
+    ],
+    "talking_points": [
+      "Overwhelmed customs inspectors",
+      "Higher chance of slipping through",
+      "Systematic exploitation of weak points"
+    ]
+  }
+}

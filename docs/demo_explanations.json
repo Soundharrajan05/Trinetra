@@ -1,0 +1,85 @@
+{
+  "TXN00006": {
+    "transaction_id": "TXN00006",
+    "risk_category": "FRAUD",
+    "risk_score": 0.85,
+    "explanation": "This crude oil transaction exhibits extreme price manipulation with a 73% deviation below market value. The trade price of $20 per ton compared to the market price of $75 per ton represents a $55 discount that no legitimate business would offer. This pattern is consistent with transfer pricing fraud or money laundering schemes where the true value is disguised through artificially low pricing.",
+    "key_indicators": [
+      "Price deviation: -73.12%",
+      "Trade price: $20/ton vs Market: $75/ton",
+      "Product: Crude Oil (high-value commodity)",
+      "Risk classification: FRAUD",
+      "Potential schemes: Transfer pricing fraud, Money laundering"
+    ],
+    "investigation_priority": "CRITICAL",
+    "recommended_actions": [
+      "Verify exporter and importer relationship",
+      "Check for shell company involvement",
+      "Review historical transactions between these entities",
+      "Investigate ultimate beneficial owners",
+      "Flag for customs inspection"
+    ]
+  },
+  "TXN00017": {
+    "transaction_id": "TXN00017",
+    "risk_category": "SUSPICIOUS",
+    "risk_score": 0.45,
+    "explanation": "This wheat shipment involves a company with a very high risk score of 0.93, indicating a history of suspicious activity. The trade price is 19% above market value ($358 vs $300 per ton), suggesting potential invoice fraud or kickback schemes. The combination of overpricing and high-risk company involvement warrants detailed investigation.",
+    "key_indicators": [
+      "Company risk score: 0.93 (Very High)",
+      "Price deviation: +19.33%",
+      "Trade price: $358/ton vs Market: $300/ton",
+      "Product: Wheat",
+      "Risk classification: SUSPICIOUS"
+    ],
+    "investigation_priority": "HIGH",
+    "recommended_actions": [
+      "Review company's transaction history",
+      "Investigate pricing justification",
+      "Check for related party transactions",
+      "Verify quality specifications",
+      "Monitor for pattern of overpricing"
+    ]
+  },
+  "TXN00010": {
+    "transaction_id": "TXN00010",
+    "risk_category": "SUSPICIOUS",
+    "risk_score": 0.52,
+    "explanation": "This transaction triggers multiple fraud indicators simultaneously. The port activity index of 1.5 indicates routing through a congested port where customs inspection is less thorough. Combined with route anomalies and elevated company risk, this suggests deliberate exploitation of overwhelmed inspection points to avoid detection.",
+    "key_indicators": [
+      "Port activity index: 1.5 (Highly congested)",
+      "Route anomaly detected",
+      "Company risk score: 0.78",
+      "Multiple simultaneous alerts",
+      "Risk classification: SUSPICIOUS"
+    ],
+    "investigation_priority": "HIGH",
+    "recommended_actions": [
+      "Verify routing justification",
+      "Check for pattern of congested port usage",
+      "Inspect cargo if possible",
+      "Review company's routing history",
+      "Coordinate with port authorities"
+    ]
+  },
+  "TXN00452": {
+    "transaction_id": "TXN00452",
+    "risk_category": "SUSPICIOUS",
+    "risk_score": 0.38,
+    "explanation": "This shipment follows an unusual route that deviates from standard shipping lanes. Route anomalies often indicate attempts to avoid inspection at major customs checkpoints or to obscure the true origin or destination of goods. This pattern requires investigation to rule out sanctions evasion or smuggling.",
+    "key_indicators": [
+      "Route anomaly: Yes",
+      "Non-standard shipping route",
+      "Distance: Longer than typical",
+      "Risk classification: SUSPICIOUS"
+    ],
+    "investigation_priority": "MEDIUM",
+    "recommended_actions": [
+      "Verify route justification",
+      "Check intermediate ports",
+      "Review shipping documentation",
+      "Investigate for sanctions evasion",
+      "Monitor for repeated pattern"
+    ]
+  }
+}
