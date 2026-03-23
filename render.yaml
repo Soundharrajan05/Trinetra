@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: trinetra-ai-api
+    env: python
+    plan: starter
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements-deploy.txt
+    startCommand: python backend/api_fixed.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        value: 8000
+    healthCheckPath: /health
+    
+  - type: web  
+    name: trinetra-ai-dashboard
+    env: python
+    plan: starter
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements-deploy.txt
+    startCommand: streamlit run frontend/dashboard.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: API_BASE_URL
+        value: https://trinetra-ai-api.onrender.com
