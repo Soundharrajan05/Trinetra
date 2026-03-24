@@ -23,7 +23,7 @@ services:
     buildCommand: |
       python -m pip install --upgrade pip==23.3.1
       pip install --no-cache-dir -r requirements.txt
-    startCommand: streamlit run deploy_dashboard_minimal.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
+    startCommand: python deploy_dashboard_html.py
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0

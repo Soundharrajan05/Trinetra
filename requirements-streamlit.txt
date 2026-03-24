@@ -1,9 +1,9 @@
-# TRINETRA AI - Ultra Minimal Requirements
-# For Python 3.14 compatibility - no Streamlit dependencies
+# TRINETRA AI - With Streamlit (Use when Python 3.14 compatibility is resolved)
 
-# Core API Framework
+# Core Framework Dependencies
 fastapi==0.103.0
 uvicorn[standard]==0.23.0
+streamlit==1.27.0
 
 # HTTP Requests
 requests==2.31.0
