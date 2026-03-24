@@ -1,0 +1,1 @@
+web: python deploy_api_minimal.py

@@ -76,16 +76,38 @@ typing-extensions==4.7.1   # Type hints
 
 ## Render Deployment Steps
 
-### Automatic (Recommended):
+### Option 1: Automatic (Using render.yaml) - Recommended
 1. **Push to GitHub**: Changes are ready to deploy
-2. **Render Auto-Deploy**: Will build successfully in ~1-2 minutes
+2. **Render Auto-Deploy**: Should use render.yaml configuration
 3. **Verify**: Check both API and dashboard endpoints
 
-### Manual Configuration (If Needed):
+### Option 2: Manual Configuration (If render.yaml not recognized)
+
+If Render doesn't use the render.yaml file, configure manually:
+
+#### For API Service:
 - **Build Command**: `pip install --no-cache-dir -r requirements.txt`
-- **API Start Command**: `python deploy_api_minimal.py`
-- **Dashboard Start Command**: `python deploy_dashboard_html.py`
-- **Runtime**: `python-3.11.0` (from runtime.txt)
+- **Start Command**: `python deploy_api_minimal.py`
+- **Runtime**: `python-3.11.0`
+- **Environment Variables**:
+  - `PYTHON_VERSION`: `3.11.0`
+  - `PORT`: `8000`
+
+#### For Dashboard Service:
+- **Build Command**: `pip install --no-cache-dir -r requirements.txt`
+- **Start Command**: `python deploy_dashboard_html.py`
+- **Runtime**: `python-3.11.0`
+- **Environment Variables**:
+  - `PYTHON_VERSION`: `3.11.0`
+  - `API_BASE_URL`: `https://your-api-service.onrender.com`
+  - `SERVICE_TYPE`: `dashboard`
+
+### Option 3: Using Fallback Files
+If neither works, Render will use:
+- `run.py` (automatically detects service type)
+- `Procfile` (defaults to API)
+
+Both are configured and ready to use.
 
 ## Expected Build Results
 
@@ -162,3 +184,33 @@ This is extremely unlikely with only 6 core dependencies, but if it happens:
 3. Check Render service logs
 
 The current ultra-minimal setup guarantees successful deployment on Python 3.14 while maintaining all core TRINETRA AI functionality!
+
+## Troubleshooting
+
+### If Build Still Fails:
+This is extremely unlikely with only 6 core dependencies, but if it happens:
+1. Check Render logs for specific error
+2. Verify runtime.txt is being used
+3. Try manual build: `pip install fastapi uvicorn requests pydantic python-dotenv typing-extensions`
+
+### If App Doesn't Start:
+1. Check PORT environment variable is set
+2. Verify deploy files exist
+3. Check Render service logs
+
+### If Render Uses Wrong Start Command:
+**Problem**: Render runs `python run.py` instead of using render.yaml
+
+**Solutions** (in order):
+1. **Manual Configuration**: Set start command to `python deploy_api_minimal.py` in Render dashboard
+2. **Use Fallback**: The `run.py` file will automatically start the API
+3. **Environment Variable**: Set `SERVICE_TYPE=dashboard` for dashboard service
+
+### Common Render Configuration Issues:
+- **render.yaml not recognized**: Configure services manually in Render dashboard
+- **Wrong Python version**: Ensure runtime.txt contains `python-3.11.0`
+- **Missing environment variables**: Set PORT, API_BASE_URL, SERVICE_TYPE as needed
+
+### Current Issue Resolution:
+**Status**: ✅ Build successful, dependencies installed
+**Next Step**: Configure start command in Render dashboard or let run.py handle it automatically
