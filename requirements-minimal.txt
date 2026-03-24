@@ -1,0 +1,19 @@
+# TRINETRA AI - Minimal Requirements (No Pandas)
+# For deployment without data processing dependencies
+
+# Core Framework Dependencies
+fastapi==0.103.0
+uvicorn[standard]==0.23.0
+streamlit==1.27.0
+
+# HTTP Requests
+requests==2.31.0
+
+# Data Validation
+pydantic==1.10.12
+
+# Logging and Utilities
+python-dotenv==1.0.0
+
+# Basic utilities
+typing-extensions==4.7.1
