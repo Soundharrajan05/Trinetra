@@ -1,1 +1,1 @@
-web: python deploy_api_minimal.py
+web: python deploy_api_ultra_minimal.py

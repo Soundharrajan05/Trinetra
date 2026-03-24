@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Minimal deployment version of TRINETRA AI API for Render
-No pandas dependency - uses pure Python data structures
+Ultra minimal deployment version of TRINETRA AI API for Render
+No Pydantic models - uses plain dictionaries for maximum compatibility
 """
 
 import os
@@ -11,7 +11,6 @@ import random
 from typing import List, Dict, Any, Optional
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, ConfigDict
 import uvicorn
 
 # Configure logging
@@ -37,13 +36,6 @@ app.add_middleware(
 # Global data storage
 GLOBAL_DATA: List[Dict] = []
 _initialization_complete = False
-
-class APIResponse(BaseModel):
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-    
-    status: str
-    data: Any = None
-    message: str = ""
 
 def generate_sample_data():
     """Generate sample fraud detection data without pandas."""
@@ -137,97 +129,97 @@ def health_check():
     """Health check endpoint."""
     return {"status": "ok", "message": "TRINETRA AI API is running"}
 
-@app.get("/", response_model=APIResponse)
+@app.get("/")
 async def root():
     """Root endpoint with system information."""
-    return APIResponse(
-        status="success",
-        data={
+    return {
+        "status": "success",
+        "data": {
             "name": "TRINETRA AI - Trade Fraud Intelligence API",
             "version": "1.0.0",
             "description": "AI-powered trade fraud detection and analysis",
             "transactions_loaded": len(GLOBAL_DATA),
             "system_status": "initialized" if _initialization_complete else "initializing"
         },
-        message="TRINETRA AI API is running"
-    )
+        "message": "TRINETRA AI API is running"
+    }
 
-@app.get("/transactions", response_model=APIResponse)
+@app.get("/transactions")
 async def get_transactions(
     limit: int = Query(100, ge=1, le=1000),
     offset: int = Query(0, ge=0)
 ):
     """Get transactions with pagination."""
     if not _initialization_complete:
-        return APIResponse(status="loading", message="System is still initializing")
+        return {"status": "loading", "message": "System is still initializing"}
     
     try:
         total_count = len(GLOBAL_DATA)
         
         if offset >= total_count:
-            return APIResponse(
-                status="success",
-                data={
+            return {
+                "status": "success",
+                "data": {
                     "transactions": [],
                     "pagination": {"total": total_count, "limit": limit, "offset": offset, "returned": 0}
                 },
-                message="No transactions found at this offset"
-            )
+                "message": "No transactions found at this offset"
+            }
         
         end_idx = min(offset + limit, total_count)
         transactions_subset = GLOBAL_DATA[offset:end_idx]
         
-        return APIResponse(
-            status="success",
-            data={
+        return {
+            "status": "success",
+            "data": {
                 "transactions": transactions_subset,
                 "pagination": {"total": total_count, "limit": limit, "offset": offset, "returned": len(transactions_subset)}
             },
-            message=f"Retrieved {len(transactions_subset)} transactions"
-        )
+            "message": f"Retrieved {len(transactions_subset)} transactions"
+        }
         
     except Exception as e:
-        return APIResponse(status="error", message=f"Failed to retrieve transactions: {str(e)}")
+        return {"status": "error", "message": f"Failed to retrieve transactions: {str(e)}"}
 
-@app.get("/suspicious", response_model=APIResponse)
+@app.get("/suspicious")
 async def get_suspicious_transactions():
     """Get suspicious transactions."""
     if not _initialization_complete:
-        return APIResponse(status="loading", message="System initializing")
+        return {"status": "loading", "message": "System initializing"}
     
     try:
         suspicious_transactions = [t for t in GLOBAL_DATA if t['risk_category'] == 'SUSPICIOUS']
         
-        return APIResponse(
-            status="success",
-            data=suspicious_transactions,
-            message=f"Retrieved {len(suspicious_transactions)} suspicious transactions"
-        )
+        return {
+            "status": "success",
+            "data": suspicious_transactions,
+            "message": f"Retrieved {len(suspicious_transactions)} suspicious transactions"
+        }
     except Exception as e:
-        return APIResponse(status="error", message=f"Failed to retrieve suspicious transactions: {str(e)}")
+        return {"status": "error", "message": f"Failed to retrieve suspicious transactions: {str(e)}"}
 
-@app.get("/fraud", response_model=APIResponse)
+@app.get("/fraud")
 async def get_fraud_transactions():
     """Get fraud transactions."""
     if not _initialization_complete:
-        return APIResponse(status="loading", message="System initializing")
+        return {"status": "loading", "message": "System initializing"}
     
     try:
         fraud_transactions = [t for t in GLOBAL_DATA if t['risk_category'] == 'FRAUD']
         
-        return APIResponse(
-            status="success",
-            data=fraud_transactions,
-            message=f"Retrieved {len(fraud_transactions)} fraud transactions"
-        )
+        return {
+            "status": "success",
+            "data": fraud_transactions,
+            "message": f"Retrieved {len(fraud_transactions)} fraud transactions"
+        }
     except Exception as e:
-        return APIResponse(status="error", message=f"Failed to retrieve fraud transactions: {str(e)}")
+        return {"status": "error", "message": f"Failed to retrieve fraud transactions: {str(e)}"}
 
-@app.get("/stats", response_model=APIResponse)
+@app.get("/stats")
 async def get_statistics():
     """Get dashboard statistics."""
     if not _initialization_complete:
-        return APIResponse(status="loading", message="System initializing")
+        return {"status": "loading", "message": "System initializing"}
     
     try:
         total_transactions = len(GLOBAL_DATA)
@@ -258,16 +250,16 @@ async def get_statistics():
             }
         }
         
-        return APIResponse(status="success", data=stats, message="Statistics retrieved successfully")
+        return {"status": "success", "data": stats, "message": "Statistics retrieved successfully"}
         
     except Exception as e:
-        return APIResponse(status="error", message=f"Failed to retrieve statistics: {str(e)}")
+        return {"status": "error", "message": f"Failed to retrieve statistics: {str(e)}"}
 
-@app.post("/explain/{transaction_id}", response_model=APIResponse)
+@app.post("/explain/{transaction_id}")
 async def explain_transaction_endpoint(transaction_id: str, request: dict = None):
     """Generate explanation for a transaction."""
     if not _initialization_complete:
-        return APIResponse(status="loading", message="System initializing")
+        return {"status": "loading", "message": "System initializing"}
     
     try:
         # Find transaction
@@ -278,7 +270,7 @@ async def explain_transaction_endpoint(transaction_id: str, request: dict = None
                 break
         
         if not transaction:
-            return APIResponse(status="error", message=f"Transaction {transaction_id} not found")
+            return {"status": "error", "message": f"Transaction {transaction_id} not found"}
         
         risk_category = transaction['risk_category']
         risk_score = transaction['risk_score']
@@ -291,25 +283,25 @@ async def explain_transaction_endpoint(transaction_id: str, request: dict = None
         else:
             explanation = f"✅ LOW RISK: Transaction {transaction_id} appears normal (risk score: {risk_score:.3f}). Standard processing recommended."
         
-        return APIResponse(
-            status="success",
-            data={
+        return {
+            "status": "success",
+            "data": {
                 "transaction_id": transaction_id,
                 "explanation": explanation,
                 "explanation_type": "rule_based",
                 "session_info": {"current_count": 0, "max_count": 3, "remaining": 3}
             },
-            message=f"Generated explanation for transaction {transaction_id}"
-        )
+            "message": f"Generated explanation for transaction {transaction_id}"
+        }
         
     except Exception as e:
-        return APIResponse(status="error", message=f"Failed to explain transaction: {str(e)}")
+        return {"status": "error", "message": f"Failed to explain transaction: {str(e)}"}
 
-@app.post("/query", response_model=APIResponse)
+@app.post("/query")
 async def natural_language_query(request: dict):
     """Process natural language queries."""
     if not _initialization_complete:
-        return APIResponse(status="loading", message="System initializing")
+        return {"status": "loading", "message": "System initializing"}
     
     query = request.get("query", "")
     
@@ -325,32 +317,32 @@ async def natural_language_query(request: dict):
         else:
             answer = f"System overview: {total_transactions} transactions, {fraud_rate:.1f}% fraud rate."
         
-        return APIResponse(
-            status="success",
-            data={"query": query, "answer": answer, "response_type": "rule_based"},
-            message="Query processed successfully"
-        )
+        return {
+            "status": "success",
+            "data": {"query": query, "answer": answer, "response_type": "rule_based"},
+            "message": "Query processed successfully"
+        }
         
     except Exception as e:
-        return APIResponse(status="error", message=f"Failed to process query: {str(e)}")
+        return {"status": "error", "message": f"Failed to process query: {str(e)}"}
 
-@app.get("/session/info", response_model=APIResponse)
+@app.get("/session/info")
 async def get_session_info():
     """Get session information."""
-    return APIResponse(
-        status="success",
-        data={"current_count": 0, "max_count": 3, "remaining": 3, "can_make_explanation": True},
-        message="Session info retrieved"
-    )
+    return {
+        "status": "success",
+        "data": {"current_count": 0, "max_count": 3, "remaining": 3, "can_make_explanation": True},
+        "message": "Session info retrieved"
+    }
 
-@app.get("/alerts/active", response_model=APIResponse)
+@app.get("/alerts/active")
 async def get_active_alerts():
     """Get active alerts."""
-    return APIResponse(
-        status="success",
-        data={"summaries": [], "count": 0},
-        message="No active alerts"
-    )
+    return {
+        "status": "success",
+        "data": {"summaries": [], "count": 0},
+        "message": "No active alerts"
+    }
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))

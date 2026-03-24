@@ -34,10 +34,14 @@ def main():
         # Run API (default)
         print("Starting TRINETRA AI API...")
         try:
-            subprocess.run([sys.executable, 'deploy_api_minimal.py'], check=True)
+            subprocess.run([sys.executable, 'deploy_api_ultra_minimal.py'], check=True)
         except FileNotFoundError:
-            print("Error: deploy_api_minimal.py not found")
-            sys.exit(1)
+            print("Error: deploy_api_ultra_minimal.py not found, trying deploy_api_minimal.py")
+            try:
+                subprocess.run([sys.executable, 'deploy_api_minimal.py'], check=True)
+            except FileNotFoundError:
+                print("Error: No API deployment file found")
+                sys.exit(1)
         except Exception as e:
             print(f"Error starting API: {e}")
             sys.exit(1)
