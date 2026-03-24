@@ -6,8 +6,8 @@ services:
     runtime: python-3.11.0
     buildCommand: |
       python -m pip install --upgrade pip==23.3.1
-      pip install --no-cache-dir -r requirements-deploy.txt
-    startCommand: python deploy_api.py
+      pip install --no-cache-dir -r requirements.txt
+    startCommand: python deploy_api_minimal.py
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -22,8 +22,8 @@ services:
     runtime: python-3.11.0
     buildCommand: |
       python -m pip install --upgrade pip==23.3.1
-      pip install --no-cache-dir -r requirements-deploy.txt
-    startCommand: streamlit run deploy_dashboard.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
+      pip install --no-cache-dir -r requirements.txt
+    startCommand: streamlit run deploy_dashboard_minimal.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0

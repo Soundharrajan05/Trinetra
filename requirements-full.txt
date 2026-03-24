@@ -1,0 +1,44 @@
+# TRINETRA AI - Full Requirements (With Pandas)
+# Use only when Python 3.14 compatibility is resolved
+
+# Core Framework Dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+streamlit==1.28.2
+
+# Data Processing and Analysis
+pandas==2.1.3
+numpy==1.24.3
+
+# Machine Learning
+scikit-learn==1.3.2
+joblib==1.3.2
+
+# Visualization
+plotly==5.18.0
+networkx==3.2.1
+
+# HTTP Requests
+requests==2.31.0
+
+# Data Validation
+pydantic==2.5.0
+
+# AI Integration (Google Gemini)
+google-generativeai==0.3.1
+
+# Logging and Utilities
+python-dotenv==1.0.0
+
+# System Monitoring and Performance
+psutil==5.9.6
+
+# Development and Testing (Optional)
+pytest==7.4.3
+pytest-html==4.1.1
+pytest-cov==4.1.0
+hypothesis==6.88.1
+
+# Additional utilities
+pathlib2==2.3.7
+typing-extensions==4.8.0
